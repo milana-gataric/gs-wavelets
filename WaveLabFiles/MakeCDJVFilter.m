@@ -77,7 +77,7 @@ if (strcmp(request,'HighPass')||strcmp(request,'LowPass'))
             l=l+j; k=k+1;
         end
         
-        a = reverse(MirrorFilt(internal_filters)); b = LEHI; c = REHI;
+        a = flip(MirrorFilt(internal_filters)); b = LEHI; c = REHI;
     end
     if strcmp(request, 'LowPass')
         LELO = zeros(DN,3*DN-1); k=1; l=1;
