@@ -1,0 +1,31 @@
+SetupPaths.m         %sets up the paths for connecting all subfolders and includes necessary packages;
+                     %run this first
+Precomputed_files    %folder with precomputed schemes, samples, etc. for some NUGS examples; 
+                     %check _contents_precomputed_.txt for more information
+GataricPoonPaper2015 %folder with examples used in the paper "A practical guide to the fast and stable recovery of wavelet coefficients from Fourier samples"; 
+                     %check _contents_paper_examples_.txt for more information
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Generalized Sampling (GS) with uniform samples (uses Matlab's lsqr)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+GS_1d_uniform.m               %example of 1d wavelet reconstruction (vs truncated Fourier series)
+GS_2d_uniform_continuous.m    %example of 2d wavelet reconstruction of a continuous function (vs truncated Fourier series)
+GS_2d_uniform_discontinuous.m %example of 2d wavelet reconstruction of a discontinuous function (vs truncated Fourier series)
+GS_2d_uniform_noise.m         %example of 2d wavelet reconstruction when white Gaussian noise is added to the samples (vs truncated Fourier series)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Compressed Sensing (CS)/l1 minimization examples (uses spgl1)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+GSCS_1D.m   	              %example of GS with CS in 1D
+GSCS_2D.m                     %example of GS with CS in 2D
+consistentGS.m                %example of consistent generalized sampling
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Nonuniform Generalized Sampling (NUGS) (uses Matlab's lsqr)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+NUGS_1d_jittered.m            %example of 1d wavelet reconstruction when sampling on a jittered scheme (vs gridding)
+NUGS_1d_log.m                 %example of 1d wavelet reconstruction when sampling on a log scheme (vs gridding)
+NUGS_2d.m                     %example of 2d wavelet reconstruction when sampling on a radial or spiral scheme (vs gridding)
+NUGS_2d_precomputed.m         %example of 2d DB2 reconstruction when Fourier samples are taken on a radial sampling scheme with or without noise, with precomputed files (vs gridding)
+NUGS_2d_precomputed_DB1to4.m  %example of 2d DB1-DB4 reconstruction with radial sampling, using precomputed files 
+NUGS_image.m                  %example of image reconstruction with precomputed files for DB2 and 'earth.jpg'

@@ -1,0 +1,19 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Equispaced sampling examples (uses Matlab's lsqr)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+increasing_wavelet_1D.m		     %demonstrates the use of different wavelets and error behaviour in 1D
+increasing_wavelet_noise_2D.m    %demonstrates the robustness of GS with different wavelets in 2D
+discont_comparison_2D.m     	 %demonstrates reconstruction of a discontinuous function by GS (vs truncated Fourier series) 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Nonequispaced sampling examples (uses Matlab's lsqr)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+comparison_1D.m			         %reconstructing from equispaced, log and jittered Fourier samples in 1D (vs truncated Fourier series)
+increasing_wavelet_1D_log.m      %demonstrates the use of different wavelets and error behaviour in 1D for log sampling scheme (ss)
+increasing_wavelet_1D_jit.m      %demonstrates the use of different wavelets and error behaviour in 1D for jittered ss
+increasing_wavelet_noise_2D_NU.m %demonstrates the robustness of GS with different wavelets in 2D for radial ss (vs gridding)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Compressed Sensing (CS) examples (uses spgl1)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+GS_vs_StandardCS.m          	 %comparison between infinite dimensional CS and CS using DFT DWT

@@ -1,0 +1,111 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+PREREQUISITES: WAVELAB850, download at http://www-stat.stanford.edu/~wavelab/
+               NUFFT (for nonuniform sampling), download at http://web.eecs.umich.edu/~fessler/irt/irt/
+               SPGL1 (for compressed sensing), download at https://www.math.ucdavis.edu/~mpf/spgl1/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+I. GS_handles: different reconstruction operators (handle functions)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Haar_Op_Handle.m          %1D GS operator with Haar wavelets and uniform Fourier samples (acting on a vector)
+Haar_Op_Handle_Scaling.m  %1D GS operator with Haar scaling functions and uniform Fourier samples (acting on a vector)
+Haar_Op2_VecHandle.m      %2D GS operator with Haar wavelets and uniform Fourier samples (acting on a vector)
+Haar_Op2_Wavelet.m        %2D GS operator with Haar wavelets and uniform Fourier samples (acting on a matrix)
+
+Haar_Op_Handle_NU.m       %1D GS operator with Haar wavelets and arbitrary (nonuniform) Fourier samples (acting on a vector)
+Haar_Op2_VecHandle_NU.m   %2D GS operator with Haar wavelets and arbitrary Fourier samples (acting on a vector)
+Haar_Op2_Handle_NU.m      %2D GS operator with Haar wavelets and arbitrary Fourier samples (acting on a wavelet-matrix)
+
+CDJV_Op_Handle.m          %1D GS operator with CDJV (boundary-corrected) wavelets and uniform Fourier samples (acting on a vector)
+CDJV_Op_Scaling.m         %1D GS operator with CDJV scaling functions and uniform Fourier samples (acting on a vector)
+CDJV_Op2_VecHandle.m      %2D GS operator with CDJV wavelets and uniform Fourier samples (acting on a vector)
+CDJV_Op2_Wavelet.m        %2D GS operator with CDJV wavelets and uniform Fourier samples (acting on a matrix)
+
+CDJV_Op_Handle_NU.m       %1D GS operator with CDJV wavelets and arbitrary Fourier samples (acting on a vector)
+CDJV_Op_Scaling_NU.m      %1D GS operator with CDJV scaling functions and arbitrary Fourier samples (acting on a vector)
+CDJV_Op2_VecHandle_NU.m   %2D GS operator with CDJV wavelets and arbitrary Fourier samples (acting on a vector)
+CDJV_Op2_Handle_NU.m      %2D GS operator with CDJV wavelets and arbitrary Fourier samples (acting on a wavelet-matrix)
+
+DFT_DWT_Op.m              %2D operator corresponding to compressed sensing with DFT measurements and DWT as the sparsifying transform
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+II. Wavelet_tools: files for handling wavelets
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+haar_phi_ft.m             %calculates the Fourier transform of Haar scaling function
+haar_psi_ft.m             %calculates the Fourier transform of Haar wavelet function
+
+CDJV_Setup.m              %returns the Fourier transforms of internal and boundary scaling functions for uniform samples
+CDJV_Setup_NU1D.m         %returns the Fourier transforms of internal and boundary scaling functions for arbitrary samples in 1D
+CDJV_Setup_NU2D.m         %returns the Fourier transforms of internal and boundary scaling functions for arbitrary samples in 2D
+
+CDJV_FT_Vec.m             %calculates pointwise evaluation of the Fourier transforms of internal (by calling FTfromFilter.m)
+                          %and boundary scaling functions (by calling CDJV_FTfromFilter.m).
+CDJV_FTfromFilter.m       %see CDJV_FT_Vec.m  
+FTfromFilter.m            %see CDJV_FT_Vec.m  
+
+
+get1DHaarReconstruction.m %evaluates 1D Haar reconstruction on a grid from given wavelet coefficients
+get2DHaarReconstruction.m %evaluates 2D Haar reconstruction on a grid from given wavelet coefficients
+get1DReconstruction.m     %evaluates 1D CDJV reconstruction on a grid from given wavelet coefficients    
+get1DReconstruction.m     %evaluates 2D CDJV reconstruction on a grid from given wavelet coefficients
+
+getScalingMatrix.m        %returns a matrix of pointwise evaluations of scaling functions 
+getScalingFn.m            %computes pointwise evaluations of a scaling function on grid points   
+psi_jl.m                  %scales and shifts a given vector
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+III. Utilities: files for handling different sampling schemes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Samples.m                 %calculates pointwise evaluations of the Fourier transform at equispaced points, for a given function
+Samples_NU.m              %calculates pointwise evaluations of the Fourier transform at arbitrary points, for a given function
+
+jittered_sampling_1d.m    %returns sampling points taken on 1D jittered sampling scheme
+log_sampling_1d.m         %returns sampling points taken on 1D log sampling scheme
+jittered_sampling_2d.m    %returns sampling points taken on 2D jittered sampling scheme
+polar_sampling.m          %returns sampling points taken on 2D radial sampling scheme  
+spiral_sampling.m         %returns sampling points taken on 2D spiral sampling scheme  
+
+GetSampleMask1D.m         %returns 1D sampling mask for compressed sensing, consisting of different levels
+GetSampleMask2D.m         %returns 2D sampling mask for compressed sensing, consisting of different levels     
+GetLinesMask.m            %returns 2D sampling mask for compressed sensing, consisting of radial lines on an equispaced grid
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+IV. GS_matrices: files that produce GS matrices 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Haar_1DMatrix.m           %generates 1D GS matrix with Haar and uniform Fourier samples
+Haar_2DMatrix.m           %generates 2D GS matrix with Haar and uniform Fourier samples
+Haar_Scal_1DMatrix_jit.m  %generates 1D GS matrix with Haar scaling functions and jittered Fourier samples
+Haar_Scal_2DMatrix_NU.m   %generates 2D GS matrix with Haar scaling functions and radial or spiral Fourier samples
+
+CDJV_1DMatrix.m           %generates 1D GS matrix with CDJV wavelets and uniform Fourier samples
+CDJV_2DMatrix.m           %generates 2D GS matrix with CDJV wavelets and uniform Fourier samples
+CDJV_1DMatrix_jit.m       %generates 1D GS matrix with CDJV wavelets and jittered Fourier samples
+CDJV_1DMatrix_log.m       %generates 1D GS matrix with CDJV wavelets and log Fourier samples
+CDJV_2DMatrix_NU.m        %generates 2D GS matrix with CDJV wavelets and radial or spiral Fourier samples
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+V. WaveLabFiles: updates of some Wavelab files
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+MakeCDJVFilter.m          %sets up filters for CDJV Wavelet Transform for orders 2-8
+                          %NB: MakeCDJVFilter.m from  Wavelab850 only supports CDJV filters up to order 3.
+                          %Replace the MakeCDJVFilter.m from Wavelab with this file for higher wavelet orders.
+
+CDJV_Filters              %folder with text files for CDJV wavelet filters of order 2-8
+
+IWT2_CDJV.m               %IWT for 2D boundary-corrected wavelets
+FWT2_CDJV.m               %FWT for 2D boundary-corrected wavelets
+FWT2_CDJV_noP.m           %FWT for 2D boundary-corrected wavelets without preconditioning
+IWT2_CDJV_noP.m           %IWT for 2D boundary-corrected wavelets without postconditioning
+FWT_CDJV_noP.m            %FWT for 1D boundary-corrected wavelets without preconditioning
+IWT_CDJV_noP.m            %IWT for 1D boundary-corrected wavelets without postconditioning
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+VI. Examples: contains several example files
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+See _contents_examples_.m for more information.

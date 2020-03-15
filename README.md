@@ -1,0 +1,1 @@
+This is a Matlab implementation of generalized sampling for the reconstruction of wavelet coefficients from Fourier measurements. A detailed description of the implementation can be found in M. Gataric and C. Poon, A practical guide to the recovery of wavelet coefficients from Fourier measurements.
